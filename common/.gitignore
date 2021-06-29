@@ -6,7 +6,6 @@
 # Compiled files
 *.tfstate
 *.tfstate.backup
-.terraform.lock.hcl
 .terragrunt-cache
 backend.tf
 
