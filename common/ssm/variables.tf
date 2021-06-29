@@ -14,6 +14,10 @@ variable "common_tags" {
 #------------------------
 #local variables
 #------------------------
-variable "usernamedb" {}
+variable "usernamedb" {
+  sensitive = true
+}
 
-variable "passworddb" {}
+variable "passworddb" {
+  sensitive = true
+}

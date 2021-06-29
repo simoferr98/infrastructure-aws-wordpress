@@ -9,8 +9,6 @@ export TF_VAR_vpc_azs='["eu-central-1a", "eu-central-1b", "eu-central-1c"]'
 #------------------------
 #common local variables
 #------------------------
-export TF_VAR_usernamedb=admindb
-export TF_VAR_passworddb=password
 export TF_VAR_database_name=wordpressdb
 export TF_VAR_container_port=80
 export TF_VAR_container_name=wp-app
@@ -40,9 +38,13 @@ export TF_VAR_rds_01_deletion_protection=true
 export TF_VAR_rds_01_storage_encrypted=true
 
 #------------------------
-#local variables ecs
+#local variables cloudwatch
 #-----------------------
 export TF_VAR_cloudwatch_log_group_01_log_retention_in_days=7
+
+#------------------------
+#local variables ecs
+#-----------------------
 export TF_VAR_task_definition_01_task_cpu=1024
 export TF_VAR_task_definition_01_task_memory=2048
 export TF_VAR_task_definition_01_container_image_url=wordpress:5.7.2-php7.3-apache

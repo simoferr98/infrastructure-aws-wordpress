@@ -24,9 +24,13 @@ variable "vpc_01_id" {}
 #------------------------
 #local variables
 #------------------------
-variable "usernamedb" {}
+variable "usernamedb" {
+  sensitive = true
+}
 
-variable "passworddb" {}
+variable "passworddb" {
+  sensitive = true
+}
 
 variable "database_name" {}
 
