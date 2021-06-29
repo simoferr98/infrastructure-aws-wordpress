@@ -28,4 +28,4 @@ Creating an infrastructure to host Wordpress on AWS that must be scalable and hi
 In the Repository each single component is declared inside a dedicated folder which contains the files needed by terraform to create the resource. Using Terragrunt we can manage the dependencies between the various components and create all the necessary resources (S3 buckets and DynamoDB tables) to use a [remote state](https://www.terraform.io/docs/language/state/remote.html) for Terraform.
 
 ### Configure environment
-Several variables are used to parameterize the architecture. The variables are defined in varriable/common.sh
+Several variables are used to parameterize the architecture. The variables are defined in variables/common.sh
