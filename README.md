@@ -2,7 +2,7 @@
 Creating an infrastructure to host Wordpress on AWS that must be scalable and highly reliable using the Infrastructure as Code (IaC) approach. All the components that compose it are managed by AWS, the effort to configure and manage the application is minimal.
 
 ## Infrastructure consists of the following components:
-![infrastructure-aws-wordpres](common/infrastructure-aws-wordpres.png)
+![infrastructure-aws-wordpres](infrastructure-aws-wordpres.png)
 - **VPC**
   *Amazon Virtual Private Cloud (Amazon VPC) is a service that lets you launch AWS resources in a logically isolated virtual network.*
 - **Security-Group**
