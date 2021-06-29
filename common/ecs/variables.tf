@@ -26,12 +26,11 @@ variable "ssm_parameter_02_arn" {}
 variable "rds_01_endpoint" {}
 variable "role_01" {}
 variable "role_02" {}
+variable "cloudwatch_log_group_01_name" {}
 
 #------------------------
 #local variables
 #------------------------
-variable "cloudwatch_log_group_01_log_retention_in_days" {}
-
 variable "task_definition_01_task_cpu" {}
 
 variable "task_definition_01_task_memory" {}

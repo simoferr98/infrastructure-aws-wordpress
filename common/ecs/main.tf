@@ -1,13 +1,4 @@
 #------------------------
-#create cloudwatch_log_group_01 for cluster ecs
-#------------------------
-resource "aws_cloudwatch_log_group" "cloudwatch_log_group_01" {
-  name              = "/${var.project}/ecs"
-  tags              = var.common_tags
-  retention_in_days = var.cloudwatch_log_group_01_log_retention_in_days
-}
-
-#------------------------
 #create cluster_ecs_01
 #------------------------
 resource "aws_ecs_cluster" "cluster_ecs_01" {
@@ -37,7 +28,7 @@ resource "aws_ecs_task_definition" "task_definition_01" {
       container_image = var.task_definition_01_container_image_url,
       container_name  = var.container_name,
       container_port  = var.container_port,
-      log_group       = aws_cloudwatch_log_group.cloudwatch_log_group_01.name,
+      log_group       = var.cloudwatch_log_group_01_name,
       region          = var.region
     }
   )

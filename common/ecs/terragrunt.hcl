@@ -10,7 +10,8 @@ dependencies {
     "../alb",
     "../ssm",
     "../rds",
-    "../iam"
+    "../iam",
+    "../cloudwatch"
   ]
 }
 
@@ -73,6 +74,14 @@ dependency "iam" {
   mock_outputs_allowed_terraform_commands = ["validate"]
 }
 
+dependency "cloudwatch" {
+  config_path = "../cloudwatch"
+  mock_outputs = {
+    cloudwatch_log_group_01_name = "temporary-dummy-id"
+  }
+  mock_outputs_allowed_terraform_commands = ["validate"]
+}
+
 inputs = {
   sg_efs_01_id             = dependency.security-group.outputs.sg_efs_01_id
   sg_ecs_01_id             = dependency.security-group.outputs.sg_ecs_01_id
@@ -84,4 +93,5 @@ inputs = {
   rds_01_endpoint          = dependency.rds.outputs.rds_01_endpoint
   role_01                  = dependency.iam.outputs.role_01
   role_02                  = dependency.iam.outputs.role_02
+  cloudwatch_log_group_01_name = dependency.cloudwatch.outputs.cloudwatch_log_group_01_name
 }
