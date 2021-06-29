@@ -52,6 +52,3 @@ export TF_VAR_appautoscaling_target_01_max_capacity=10
 export TF_VAR_appautoscaling_target_01_ecs_service_autoscaling_cpu_average_utilization_target=50
 export TF_VAR_appautoscaling_target_01_ecs_service_autoscaling_scale_in_cooldown=300
 export TF_VAR_appautoscaling_target_01_ecs_service_autoscaling_scale_out_cooldown=300
-
-
-aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 813082851861.dkr.ecr.eu-central-1.amazonaws.com
