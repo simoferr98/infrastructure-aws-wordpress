@@ -18,7 +18,7 @@ remote_state {
     if_exists = "skip"
   }
   config = {
-    bucket              = "${local.project_name}-${local.region}-terraform-state"
+    bucket              = "${local.account_id}-${local.project_name}-${local.region}-terraform-state"
     key                 = "${path_relative_to_include()}/terraform.tfstate"
     region              = local.region
     encrypt             = true
