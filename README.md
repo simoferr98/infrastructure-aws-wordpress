@@ -97,3 +97,39 @@ Export the AWS_PROFILE environment variable, enhancing it with the profile name
 ```
 $ export AWS_PROFILE=simoneferraro
 ```
+---
+
+### Create environment
+
+1. Export the environment variables `infrastructure-aws-wordpress/variables/common.sh` path to your console:
+```
+$ source infrastructure-aws-wordpress/variables/common.sh
+```
+2. Navigate to the `infrastructure-aws-wordpress/common/name_resource` Example:
+```
+$ cd infrastructure-aws-wordpress/common/vpc
+```
+3. Run `terragrunt init`  is used to initialize working directory containing Terraform configuration files.
+Example of output:
+```
+$ cd infrastructure-aws-wordpress/common/vpc
+```
+4. Run the `terragrunt plan` command which creates an execution plan.
+Example of output:
+```
+$ cd infrastructure-aws-wordpress/common/vpc
+```
+5.Run the `terragrunt apply` command to create the resources and answer" yes "to confirm the operation.
+Take note of the output values ​​after the `terragrunt apply` phase, especially *** alb public_dns ***
+Example of output:
+```
+$ cd infrastructure-aws-wordpress/common/vpc
+```
+
+---
+
+## Access the Wordpress installation
+Let's try to invoke Wordpress by opening a browser and pointing the retrieved url through the output values *http://\<public_dns\>*
+(wordpres-install.png)
+
+---
