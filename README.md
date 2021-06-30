@@ -23,7 +23,7 @@ Creating an infrastructure to host Wordpress on AWS that must be scalable and hi
   *Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service that helps you easily deploy, manage, and scale containerized applications.*
 
 ## Deployment method:
-[***Terraform***](https://www.terraform.io/) is used to create infrastructure using the IaC allows developers to use a configuration language called HCL (HashiCorp Configuration Language) to describe the infrastructure using different [module Terraform](https://registry.terraform.io/browse/modules?provider=aws) battle tested to optimize the amount of code needed to provision the infrastructure. [***Terragrunt***](https://terragrunt.gruntwork.io/) was also used as a wrapper to add various functions.
+[***Terraform***](https://www.terraform.io/) is used to create infrastructure using the IaC allows developers to use a configuration language called HCL (HashiCorp Configuration Language) to describe the infrastructure using different [module Terraform](https://registry.terraform.io/browse/modules?provider=aws)  tested to optimize the amount of code needed to provision the infrastructure. [***Terragrunt***](https://terragrunt.gruntwork.io/) was  used as a wrapper to add various functions.
 
 In the Repository each single component is declared inside a dedicated folder which contains the files needed by terraform to create the resource. Using Terragrunt we can manage the dependencies between the various components and create all the necessary resources (S3 buckets and DynamoDB tables) to use a [remote state](https://www.terraform.io/docs/language/state/remote.html) for Terraform.
 
@@ -99,7 +99,7 @@ $ export AWS_PROFILE=simoneferraro
 ```
 ---
 
-### Create environment
+## Create environment
 
 1. Export the environment variables `infrastructure-aws-wordpress/variables/common.sh` path to your console:
 ```
@@ -110,20 +110,23 @@ $ source infrastructure-aws-wordpress/variables/common.sh
 $ cd infrastructure-aws-wordpress/common/vpc
 ```
 3. Run `terragrunt init`  is used to initialize working directory containing Terraform configuration files.
+Perform the same procedure for all resource of the project
 Example of output:
 ```
-$ cd infrastructure-aws-wordpress/common/vpc
+$ 
 ```
 4. Run the `terragrunt plan` command which creates an execution plan.
+Perform the same procedure for all resource of the project
 Example of output:
 ```
-$ cd infrastructure-aws-wordpress/common/vpc
+$ 
 ```
 5. Run the `terragrunt apply` command to create the resources and answer" yes "to confirm the operation.
 Take note of the output values ​​after the `terragrunt apply` phase, especially `alb_01_lb_dns_name`
+Perform the same procedure for all resource of the project
 Example of output:
 ```
-$ cd infrastructure-aws-wordpress/common/vpc
+$ 
 ```
 
 ---
@@ -133,3 +136,22 @@ Let's try to invoke Wordpress by opening a browser and pointing the retrieved ur
 (wordpres-install.png)
 
 ---
+## Delete Environment
+1. Export the environment variables `infrastructure-aws-wordpress/variables/common.sh` path to your console:
+```
+$ source infrastructure-aws-wordpress/variables/common.sh
+```
+2. Navigate to the `infrastructure-aws-wordpress/common/name_resource` Example:
+```
+$ cd infrastructure-aws-wordpress/common/vpc
+```
+3. Run `terragrunt destroy` from the root dir of this repository, and answer "yes" to confirm the operation.
+Perform the same procedure for all resource of the project
+
+```
+
+```
+4. Remove the S3 bucket of Terraform remote state (created automatically from Terragrunt).
+5. Remove the DynamoDB Table for Terraform state locks (created automatically from Terragrunt). 
+---
+
