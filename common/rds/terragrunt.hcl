@@ -15,16 +15,16 @@ dependency "security-group" {
     sg_rds_01_id   = ["temporary-dummy-id"]
     sg_rds_01_name = ["temporary-dummy-id"]
   }
-  mock_outputs_allowed_terraform_commands = ["validate"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
 }
 
 dependency "vpc" {
   config_path = "../vpc"
   mock_outputs = {
-    vpc_01_id               = "temporary-dummy-id"
-    vpc_01_database_subnets = "temporary-dummy-id"
+    vpc_01_id               = ["temporary-dummy-id"]
+    vpc_01_database_subnets = ["temporary-dummy-id"]
   }
-  mock_outputs_allowed_terraform_commands = ["validate"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
 }
 
 inputs = {
@@ -33,4 +33,3 @@ inputs = {
   vpc_01_id               = dependency.vpc.outputs.vpc_01_id
   vpc_01_database_subnets = dependency.vpc.outputs.vpc_01_database_subnets
 }
-
