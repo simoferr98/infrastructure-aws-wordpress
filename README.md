@@ -40,7 +40,8 @@ In the Repository each single component is declared inside a dedicated folder wh
 ### secret:
 The code contains the following sensitive input variables which must not be versioned in the repository. 
 They can be entered manually before Terraform / Terragrunt is started or they can be passed to Terraform using a local .tfvars
-|Name|Description|Type
+
+|Name|Description|Type|
 |----|-----------|----|
 |usernamedb|The username of admin user of Aurora database|string|
 |passwordb|The password of admin user of Aurora database|string|
