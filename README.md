@@ -28,7 +28,7 @@ Creating an infrastructure to host Wordpress on AWS that must be scalable and hi
 In the Repository each single component is declared inside a dedicated folder which contains the files needed by terraform to create the resource. Using Terragrunt we can manage the dependencies between the various components and create all the necessary resources (S3 buckets and DynamoDB tables) to use a [remote state](https://www.terraform.io/docs/language/state/remote.html) for Terraform.
 
 ---
-## Configure environment
+## Configure environment:
 
 ### System requirements
 
@@ -37,7 +37,7 @@ In the Repository each single component is declared inside a dedicated folder wh
 - [Terraform](https://www.terraform.io/downloads.html) (1.0+)
 - [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/) (0.31+)
 
-### secret:
+### Secret
 The code contains the following sensitive input variables which must not be versioned in the repository. 
 They can be entered manually before Terraform / Terragrunt is started or they can be passed to Terraform using a local .tfvars
 
@@ -46,7 +46,7 @@ They can be entered manually before Terraform / Terragrunt is started or they ca
 |usernamedb|The username of admin user of Aurora database|string|
 |passwordb|The password of admin user of Aurora database|string|
 
-### environment variables:
+### Environment Variables
 Several variables are used to parameterize the architecture. The variables are defined in varriable/common.sh
 
 |Name|Description|Type|Default|
@@ -99,7 +99,7 @@ $ export AWS_PROFILE=simoneferraro
 ```
 ---
 
-## Create environment
+## Create Environment
 
 1. Export the environment variables `infrastructure-aws-wordpress/variables/common.sh` path to your console:
 ```
