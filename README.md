@@ -155,3 +155,29 @@ Perform the same procedure for all resource of the project
 5. Remove the DynamoDB Table for Terraform state locks (created automatically from Terragrunt). 
 ---
 
+## Create and Delete environment using Terragrunt run-all
+### Create Environment
+1. Export the environment variables `infrastructure-aws-wordpress/variables/common.sh` path to your console:
+```
+$ source infrastructure-aws-wordpress/variables/common.sh
+```
+2. Move to the root folder Example:
+```
+$ cd infrastructure-aws-wordpress/common
+```
+3. Run the `terragrunt run-all apply` command to create the resources and answer" yes "to confirm the operation.
+
+### Delete Environment
+1. Export the environment variables `infrastructure-aws-wordpress/variables/common.sh` path to your console:
+```
+$ source infrastructure-aws-wordpress/variables/common.sh
+```
+2. Move to the root folder Example:
+```
+$ cd infrastructure-aws-wordpress/common
+```
+3. Run the `terragrunt run-all destroy` from the root dir of this repository, and answer "yes" to confirm the operation.
+4. Remove the S3 bucket of Terraform remote state (created automatically from Terragrunt).
+5. Remove the DynamoDB Table for Terraform state locks (created automatically from Terragrunt). 
+
+---
