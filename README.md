@@ -119,8 +119,8 @@ Example of output:
 ```
 $ cd infrastructure-aws-wordpress/common/vpc
 ```
-5.Run the `terragrunt apply` command to create the resources and answer" yes "to confirm the operation.
-Take note of the output values ​​after the `terragrunt apply` phase, especially *** alb public_dns ***
+5. Run the `terragrunt apply` command to create the resources and answer" yes "to confirm the operation.
+Take note of the output values ​​after the `terragrunt apply` phase, especially `alb_01_lb_dns_name`
 Example of output:
 ```
 $ cd infrastructure-aws-wordpress/common/vpc
