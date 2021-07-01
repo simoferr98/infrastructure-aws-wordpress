@@ -105,7 +105,7 @@ $ export AWS_PROFILE=simoneferraro
 ```
 $ source infrastructure-aws-wordpress/variables/common.sh
 ```
-2. Navigate to the `infrastructure-aws-wordpress/common/name_resource` Example:
+2. Move to the folder of the component we want to create Example:`infrastructure-aws-wordpress/common/name_resource`
 ```
 $ cd infrastructure-aws-wordpress/common/vpc
 ```
@@ -113,20 +113,832 @@ $ cd infrastructure-aws-wordpress/common/vpc
 Perform the same procedure for all resource of the project
 Example of output:
 ```
-$ 
+$  terragrunt init
+Remote state S3 bucket 813082851861-wordpress-eu-central-1-terraform-state does not exist or you don't have permissions to access it. Would you like Terragrunt to create it? (y/n) y
+Initializing modules...
+Downloading terraform-aws-modules/vpc/aws 3.1.0 for vpc_01...
+- vpc_01 in .terraform/modules/vpc_01
+
+Initializing the backend...
+
+Successfully configured the backend "s3"! Terraform will automatically
+use this backend unless the backend configuration changes.
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Installing hashicorp/aws v3.47.0...
+- Installed hashicorp/aws v3.47.0 (signed by HashiCorp)
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
 ```
 4. Run the `terragrunt plan` command which creates an execution plan.
 Perform the same procedure for all resource of the project
 Example of output:
 ```
-$ 
+$ terragrunt plan
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.vpc_01.aws_eip.nat[0] will be created
+  + resource "aws_eip" "nat" {
+      + allocation_id        = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = (known after apply)
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc                  = true
+    }
+
+  # module.vpc_01.aws_eip.nat[1] will be created
+  + resource "aws_eip" "nat" {
+      + allocation_id        = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = (known after apply)
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc                  = true
+    }
+
+  # module.vpc_01.aws_eip.nat[2] will be created
+  + resource "aws_eip" "nat" {
+      + allocation_id        = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = (known after apply)
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc                  = true
+    }
+
+  # module.vpc_01.aws_internet_gateway.this[0] will be created
+  + resource "aws_internet_gateway" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # module.vpc_01.aws_nat_gateway.this[0] will be created
+  + resource "aws_nat_gateway" "this" {
+      + allocation_id        = (known after apply)
+      + connectivity_type    = "public"
+      + id                   = (known after apply)
+      + network_interface_id = (known after apply)
+      + private_ip           = (known after apply)
+      + public_ip            = (known after apply)
+      + subnet_id            = (known after apply)
+      + tags                 = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+    }
+
+  # module.vpc_01.aws_nat_gateway.this[1] will be created
+  + resource "aws_nat_gateway" "this" {
+      + allocation_id        = (known after apply)
+      + connectivity_type    = "public"
+      + id                   = (known after apply)
+      + network_interface_id = (known after apply)
+      + private_ip           = (known after apply)
+      + public_ip            = (known after apply)
+      + subnet_id            = (known after apply)
+      + tags                 = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+    }
+
+  # module.vpc_01.aws_nat_gateway.this[2] will be created
+  + resource "aws_nat_gateway" "this" {
+      + allocation_id        = (known after apply)
+      + connectivity_type    = "public"
+      + id                   = (known after apply)
+      + network_interface_id = (known after apply)
+      + private_ip           = (known after apply)
+      + public_ip            = (known after apply)
+      + subnet_id            = (known after apply)
+      + tags                 = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+    }
+
+  # module.vpc_01.aws_route.private_nat_gateway[0] will be created
+  + resource "aws_route" "private_nat_gateway" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + nat_gateway_id         = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+
+      + timeouts {
+          + create = "5m"
+        }
+    }
+
+  # module.vpc_01.aws_route.private_nat_gateway[1] will be created
+  + resource "aws_route" "private_nat_gateway" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + nat_gateway_id         = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+
+      + timeouts {
+          + create = "5m"
+        }
+    }
+
+  # module.vpc_01.aws_route.private_nat_gateway[2] will be created
+  + resource "aws_route" "private_nat_gateway" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + nat_gateway_id         = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+
+      + timeouts {
+          + create = "5m"
+        }
+    }
+
+  # module.vpc_01.aws_route.public_internet_gateway[0] will be created
+  + resource "aws_route" "public_internet_gateway" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + gateway_id             = (known after apply)
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+
+      + timeouts {
+          + create = "5m"
+        }
+    }
+
+  # module.vpc_01.aws_route_table.private[0] will be created
+  + resource "aws_route_table" "private" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = (known after apply)
+      + tags             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all         = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table.private[1] will be created
+  + resource "aws_route_table" "private" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = (known after apply)
+      + tags             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all         = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table.private[2] will be created
+  + resource "aws_route_table" "private" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = (known after apply)
+      + tags             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all         = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table.public[0] will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = (known after apply)
+      + tags             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all         = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.database[0] will be created
+  + resource "aws_route_table_association" "database" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.database[1] will be created
+  + resource "aws_route_table_association" "database" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.database[2] will be created
+  + resource "aws_route_table_association" "database" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.private[0] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.private[1] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.private[2] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.public[0] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.public[1] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_route_table_association.public[2] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.database[0] will be created
+  + resource "aws_subnet" "database" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1a"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.64.0/23"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = false
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-db-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-db-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.database[1] will be created
+  + resource "aws_subnet" "database" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1b"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.66.0/23"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = false
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-db-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-db-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.database[2] will be created
+  + resource "aws_subnet" "database" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1c"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.68.0/23"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = false
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-db-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-db-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.private[0] will be created
+  + resource "aws_subnet" "private" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1a"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.32.0/21"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = false
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.private[1] will be created
+  + resource "aws_subnet" "private" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1b"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.40.0/21"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = false
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.private[2] will be created
+  + resource "aws_subnet" "private" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1c"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.48.0/21"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = false
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-private-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.public[0] will be created
+  + resource "aws_subnet" "public" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1a"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.0.0/22"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = true
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public-eu-central-1a"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.public[1] will be created
+  + resource "aws_subnet" "public" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1b"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.8.0/22"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = true
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public-eu-central-1b"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_subnet.public[2] will be created
+  + resource "aws_subnet" "public" {
+      + arn                             = (known after apply)
+      + assign_ipv6_address_on_creation = false
+      + availability_zone               = "eu-central-1c"
+      + availability_zone_id            = (known after apply)
+      + cidr_block                      = "13.0.4.0/22"
+      + id                              = (known after apply)
+      + ipv6_cidr_block_association_id  = (known after apply)
+      + map_public_ip_on_launch         = true
+      + owner_id                        = (known after apply)
+      + tags                            = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                        = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc-public-eu-central-1c"
+          + "Progetto"  = "wordpress"
+        }
+      + vpc_id                          = (known after apply)
+    }
+
+  # module.vpc_01.aws_vpc.this[0] will be created
+  + resource "aws_vpc" "this" {
+      + arn                              = (known after apply)
+      + assign_generated_ipv6_cidr_block = false
+      + cidr_block                       = "13.0.0.0/16"
+      + default_network_acl_id           = (known after apply)
+      + default_route_table_id           = (known after apply)
+      + default_security_group_id        = (known after apply)
+      + dhcp_options_id                  = (known after apply)
+      + enable_classiclink               = (known after apply)
+      + enable_classiclink_dns_support   = (known after apply)
+      + enable_dns_hostnames             = true
+      + enable_dns_support               = true
+      + id                               = (known after apply)
+      + instance_tenancy                 = "default"
+      + ipv6_association_id              = (known after apply)
+      + ipv6_cidr_block                  = (known after apply)
+      + main_route_table_id              = (known after apply)
+      + owner_id                         = (known after apply)
+      + tags                             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc"
+          + "Progetto"  = "wordpress"
+        }
+      + tags_all                         = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "wordpress-vpc"
+          + "Progetto"  = "wordpress"
+        }
+    }
+
+Plan: 34 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + vpc_01_database_subnets = [
+      + (known after apply),
+      + (known after apply),
+      + (known after apply),
+    ]
+  + vpc_01_id               = (known after apply)
+  + vpc_01_name             = "wordpress-vpc"
+  + vpc_01_private_subnets  = [
+      + (known after apply),
+      + (known after apply),
+      + (known after apply),
+    ]
+  + vpc_01_public_subnets   = [
+      + (known after apply),
+      + (known after apply),
+      + (known after apply),
+    ]
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
 ```
 5. Run the `terragrunt apply` command to create the resources and answer" yes "to confirm the operation.
 Take note of the output values ​​after the `terragrunt apply` phase, especially `alb_01_lb_dns_name`
 Perform the same procedure for all resource of the project
 Example of output:
 ```
-$ 
+$ Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+module.vpc_01.aws_eip.nat[1]: Creating...
+module.vpc_01.aws_eip.nat[0]: Creating...
+module.vpc_01.aws_eip.nat[2]: Creating...
+module.vpc_01.aws_vpc.this[0]: Creating...
+module.vpc_01.aws_eip.nat[0]: Creation complete after 0s [id=eipalloc-3a485205]
+module.vpc_01.aws_eip.nat[2]: Creation complete after 0s [id=eipalloc-ed405ad2]
+module.vpc_01.aws_eip.nat[1]: Creation complete after 0s [id=eipalloc-97475da8]
+module.vpc_01.aws_vpc.this[0]: Still creating... [10s elapsed]
+module.vpc_01.aws_vpc.this[0]: Creation complete after 13s [id=vpc-0b74fbb24c65cc15e]
+module.vpc_01.aws_subnet.public[2]: Creating...
+module.vpc_01.aws_route_table.private[0]: Creating...
+module.vpc_01.aws_subnet.public[0]: Creating...
+module.vpc_01.aws_subnet.database[0]: Creating...
+module.vpc_01.aws_route_table.private[2]: Creating...
+module.vpc_01.aws_subnet.database[1]: Creating...
+module.vpc_01.aws_subnet.public[1]: Creating...
+module.vpc_01.aws_route_table.public[0]: Creating...
+module.vpc_01.aws_subnet.database[2]: Creating...
+module.vpc_01.aws_subnet.private[2]: Creating...
+module.vpc_01.aws_route_table.public[0]: Creation complete after 0s [id=rtb-0f41c4c9272218451]
+module.vpc_01.aws_route_table.private[1]: Creating...
+module.vpc_01.aws_route_table.private[2]: Creation complete after 0s [id=rtb-0e8b941ec2953d6a1]
+module.vpc_01.aws_subnet.private[0]: Creating...
+module.vpc_01.aws_route_table.private[0]: Creation complete after 0s [id=rtb-06829c415640cff41]
+module.vpc_01.aws_internet_gateway.this[0]: Creating...
+module.vpc_01.aws_subnet.database[1]: Creation complete after 1s [id=subnet-0eea3207f130881f8]
+module.vpc_01.aws_subnet.private[1]: Creating...
+module.vpc_01.aws_subnet.database[0]: Creation complete after 1s [id=subnet-0abcfc1f162d347fc]
+module.vpc_01.aws_subnet.database[2]: Creation complete after 1s [id=subnet-03cd8af0de7a0ad55]
+module.vpc_01.aws_subnet.private[2]: Creation complete after 1s [id=subnet-033520456041e76c4]
+module.vpc_01.aws_route_table.private[1]: Creation complete after 1s [id=rtb-0ea88f2457ecdcb1e]
+module.vpc_01.aws_route_table_association.database[0]: Creating...
+module.vpc_01.aws_route_table_association.database[2]: Creating...
+module.vpc_01.aws_route_table_association.database[1]: Creating...
+module.vpc_01.aws_subnet.private[0]: Creation complete after 1s [id=subnet-08cf88c66aa61ec38]
+module.vpc_01.aws_internet_gateway.this[0]: Creation complete after 1s [id=igw-0973ea1f94fb1ab14]
+module.vpc_01.aws_route.public_internet_gateway[0]: Creating...
+module.vpc_01.aws_subnet.private[1]: Creation complete after 0s [id=subnet-070b1efc2da1f9a24]
+module.vpc_01.aws_route_table_association.database[2]: Creation complete after 0s [id=rtbassoc-00f1db1710f1fb8c5]
+module.vpc_01.aws_route_table_association.database[1]: Creation complete after 0s [id=rtbassoc-0eea2c3c40d0782a3]
+module.vpc_01.aws_route_table_association.private[1]: Creating...
+module.vpc_01.aws_route_table_association.private[2]: Creating...
+module.vpc_01.aws_route_table_association.private[0]: Creating...
+module.vpc_01.aws_route_table_association.database[0]: Creation complete after 0s [id=rtbassoc-027036699413d205a]
+module.vpc_01.aws_route_table_association.private[1]: Creation complete after 1s [id=rtbassoc-0564d635d39dd5d7b]
+module.vpc_01.aws_route_table_association.private[0]: Creation complete after 1s [id=rtbassoc-089a7dd80c06526f8]
+module.vpc_01.aws_route_table_association.private[2]: Creation complete after 1s [id=rtbassoc-0f0799de4c1fb6f05]
+module.vpc_01.aws_route.public_internet_gateway[0]: Creation complete after 1s [id=r-rtb-0f41c4c92722184511080289494]
+module.vpc_01.aws_subnet.public[2]: Still creating... [10s elapsed]
+module.vpc_01.aws_subnet.public[0]: Still creating... [10s elapsed]
+module.vpc_01.aws_subnet.public[1]: Still creating... [10s elapsed]
+module.vpc_01.aws_subnet.public[0]: Creation complete after 11s [id=subnet-05190f61dab750923]
+module.vpc_01.aws_subnet.public[1]: Creation complete after 11s [id=subnet-04b2d54a3104eb29f]
+module.vpc_01.aws_subnet.public[2]: Creation complete after 11s [id=subnet-095bc73e7f59a2c4d]
+module.vpc_01.aws_route_table_association.public[0]: Creating...
+module.vpc_01.aws_route_table_association.public[1]: Creating...
+module.vpc_01.aws_nat_gateway.this[0]: Creating...
+module.vpc_01.aws_nat_gateway.this[2]: Creating...
+module.vpc_01.aws_route_table_association.public[2]: Creating...
+module.vpc_01.aws_nat_gateway.this[1]: Creating...
+module.vpc_01.aws_route_table_association.public[2]: Creation complete after 1s [id=rtbassoc-016d6bf02ec0c65b8]
+module.vpc_01.aws_route_table_association.public[0]: Creation complete after 1s [id=rtbassoc-005d710a5fe2bd1a2]
+module.vpc_01.aws_route_table_association.public[1]: Creation complete after 1s [id=rtbassoc-01d98cb226c9b6f06]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [10s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [10s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [10s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [20s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [20s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [20s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [30s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [30s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [30s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [40s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [40s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [40s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [50s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [50s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [50s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [1m0s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [1m0s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [1m0s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [1m10s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [1m10s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [1m10s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [1m20s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [1m20s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [1m20s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [1m30s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still creating... [1m30s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [1m30s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Creation complete after 1m36s [id=nat-05ae28ab99a36c110]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [1m40s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still creating... [1m40s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Creation complete after 1m47s [id=nat-07ab6ec49b341f51a]
+module.vpc_01.aws_nat_gateway.this[1]: Still creating... [1m50s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Creation complete after 1m57s [id=nat-00bac53d4ef94afac]
+module.vpc_01.aws_route.private_nat_gateway[2]: Creating...
+module.vpc_01.aws_route.private_nat_gateway[1]: Creating...
+module.vpc_01.aws_route.private_nat_gateway[0]: Creating...
+module.vpc_01.aws_route.private_nat_gateway[0]: Creation complete after 1s [id=r-rtb-06829c415640cff411080289494]
+module.vpc_01.aws_route.private_nat_gateway[2]: Creation complete after 1s [id=r-rtb-0e8b941ec2953d6a11080289494]
+module.vpc_01.aws_route.private_nat_gateway[1]: Creation complete after 1s [id=r-rtb-0ea88f2457ecdcb1e1080289494]
+
+Apply complete! Resources: 34 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+vpc_01_database_subnets = [
+  "subnet-0abcfc1f162d347fc",
+  "subnet-0eea3207f130881f8",
+  "subnet-03cd8af0de7a0ad55",
+]
+vpc_01_id = "vpc-0b74fbb24c65cc15e"
+vpc_01_name = "wordpress-vpc"
+vpc_01_private_subnets = [
+  "subnet-08cf88c66aa61ec38",
+  "subnet-070b1efc2da1f9a24",
+  "subnet-033520456041e76c4",
+]
+vpc_01_public_subnets = [
+  "subnet-05190f61dab750923",
+  "subnet-04b2d54a3104eb29f",
+  "subnet-095bc73e7f59a2c4d",
+]
 ```
 
 ---
@@ -141,7 +953,7 @@ Let's try to invoke Wordpress by opening a browser and pointing the retrieved ur
 ```
 $ source infrastructure-aws-wordpress/variables/common.sh
 ```
-2. Navigate to the `infrastructure-aws-wordpress/common/name_resource` Example:
+2. Move to the folder of the component we want to delete Example:`infrastructure-aws-wordpress/common/name_resource`:
 ```
 $ cd infrastructure-aws-wordpress/common/vpc
 ```
@@ -149,7 +961,100 @@ $ cd infrastructure-aws-wordpress/common/vpc
 Perform the same procedure for all resource of the project
 
 ```
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
 
+  Enter a value: yes
+
+module.vpc_01.aws_route_table_association.private[0]: Destroying... [id=rtbassoc-089a7dd80c06526f8]
+module.vpc_01.aws_route_table_association.database[2]: Destroying... [id=rtbassoc-00f1db1710f1fb8c5]
+module.vpc_01.aws_route_table_association.private[2]: Destroying... [id=rtbassoc-0f0799de4c1fb6f05]
+module.vpc_01.aws_route_table_association.database[0]: Destroying... [id=rtbassoc-027036699413d205a]
+module.vpc_01.aws_route_table_association.public[2]: Destroying... [id=rtbassoc-016d6bf02ec0c65b8]
+module.vpc_01.aws_route.private_nat_gateway[1]: Destroying... [id=r-rtb-0ea88f2457ecdcb1e1080289494]
+module.vpc_01.aws_route.private_nat_gateway[0]: Destroying... [id=r-rtb-06829c415640cff411080289494]
+module.vpc_01.aws_route.private_nat_gateway[2]: Destroying... [id=r-rtb-0e8b941ec2953d6a11080289494]
+module.vpc_01.aws_route.public_internet_gateway[0]: Destroying... [id=r-rtb-0f41c4c92722184511080289494]
+module.vpc_01.aws_route_table_association.private[1]: Destroying... [id=rtbassoc-0564d635d39dd5d7b]
+module.vpc_01.aws_route_table_association.database[2]: Destruction complete after 1s
+module.vpc_01.aws_route_table_association.public[1]: Destroying... [id=rtbassoc-01d98cb226c9b6f06]
+module.vpc_01.aws_route_table_association.public[2]: Destruction complete after 1s
+module.vpc_01.aws_route_table_association.public[0]: Destroying... [id=rtbassoc-005d710a5fe2bd1a2]
+module.vpc_01.aws_route_table_association.database[0]: Destruction complete after 1s
+module.vpc_01.aws_route_table_association.database[1]: Destroying... [id=rtbassoc-0eea2c3c40d0782a3]
+module.vpc_01.aws_route_table_association.private[2]: Destruction complete after 1s
+module.vpc_01.aws_route_table_association.private[0]: Destruction complete after 1s
+module.vpc_01.aws_route_table_association.private[1]: Destruction complete after 1s
+module.vpc_01.aws_subnet.private[2]: Destroying... [id=subnet-033520456041e76c4]
+module.vpc_01.aws_subnet.private[0]: Destroying... [id=subnet-08cf88c66aa61ec38]
+module.vpc_01.aws_subnet.private[1]: Destroying... [id=subnet-070b1efc2da1f9a24]
+module.vpc_01.aws_route.private_nat_gateway[1]: Destruction complete after 1s
+module.vpc_01.aws_route.private_nat_gateway[0]: Destruction complete after 1s
+module.vpc_01.aws_route.private_nat_gateway[2]: Destruction complete after 1s
+module.vpc_01.aws_nat_gateway.this[1]: Destroying... [id=nat-00bac53d4ef94afac]
+module.vpc_01.aws_nat_gateway.this[2]: Destroying... [id=nat-05ae28ab99a36c110]
+module.vpc_01.aws_nat_gateway.this[0]: Destroying... [id=nat-07ab6ec49b341f51a]
+module.vpc_01.aws_route.public_internet_gateway[0]: Destruction complete after 1s
+module.vpc_01.aws_route_table_association.public[0]: Destruction complete after 0s
+module.vpc_01.aws_route_table_association.public[1]: Destruction complete after 0s
+module.vpc_01.aws_route_table_association.database[1]: Destruction complete after 0s
+module.vpc_01.aws_route_table.private[1]: Destroying... [id=rtb-0ea88f2457ecdcb1e]
+module.vpc_01.aws_route_table.public[0]: Destroying... [id=rtb-0f41c4c9272218451]
+module.vpc_01.aws_subnet.database[2]: Destroying... [id=subnet-03cd8af0de7a0ad55]
+module.vpc_01.aws_subnet.database[0]: Destroying... [id=subnet-0abcfc1f162d347fc]
+module.vpc_01.aws_subnet.private[0]: Destruction complete after 0s
+module.vpc_01.aws_route_table.private[2]: Destroying... [id=rtb-0e8b941ec2953d6a1]
+module.vpc_01.aws_subnet.private[2]: Destruction complete after 0s
+module.vpc_01.aws_subnet.database[1]: Destroying... [id=subnet-0eea3207f130881f8]
+module.vpc_01.aws_subnet.private[1]: Destruction complete after 0s
+module.vpc_01.aws_route_table.private[0]: Destroying... [id=rtb-06829c415640cff41]
+module.vpc_01.aws_route_table.public[0]: Destruction complete after 1s
+module.vpc_01.aws_subnet.database[0]: Destruction complete after 1s
+module.vpc_01.aws_route_table.private[1]: Destruction complete after 1s
+module.vpc_01.aws_subnet.database[2]: Destruction complete after 1s
+module.vpc_01.aws_route_table.private[2]: Destruction complete after 1s
+module.vpc_01.aws_subnet.database[1]: Destruction complete after 1s
+module.vpc_01.aws_route_table.private[0]: Destruction complete after 1s
+module.vpc_01.aws_nat_gateway.this[0]: Still destroying... [id=nat-07ab6ec49b341f51a, 10s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still destroying... [id=nat-00bac53d4ef94afac, 10s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still destroying... [id=nat-05ae28ab99a36c110, 10s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still destroying... [id=nat-05ae28ab99a36c110, 20s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still destroying... [id=nat-07ab6ec49b341f51a, 20s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still destroying... [id=nat-00bac53d4ef94afac, 20s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still destroying... [id=nat-00bac53d4ef94afac, 30s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still destroying... [id=nat-07ab6ec49b341f51a, 30s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still destroying... [id=nat-05ae28ab99a36c110, 30s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still destroying... [id=nat-07ab6ec49b341f51a, 40s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still destroying... [id=nat-05ae28ab99a36c110, 40s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still destroying... [id=nat-00bac53d4ef94afac, 40s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still destroying... [id=nat-00bac53d4ef94afac, 50s elapsed]
+module.vpc_01.aws_nat_gateway.this[2]: Still destroying... [id=nat-05ae28ab99a36c110, 50s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Still destroying... [id=nat-07ab6ec49b341f51a, 50s elapsed]
+module.vpc_01.aws_nat_gateway.this[0]: Destruction complete after 51s
+module.vpc_01.aws_nat_gateway.this[2]: Destruction complete after 51s
+module.vpc_01.aws_nat_gateway.this[1]: Still destroying... [id=nat-00bac53d4ef94afac, 1m0s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Still destroying... [id=nat-00bac53d4ef94afac, 1m10s elapsed]
+module.vpc_01.aws_nat_gateway.this[1]: Destruction complete after 1m12s
+module.vpc_01.aws_subnet.public[2]: Destroying... [id=subnet-095bc73e7f59a2c4d]
+module.vpc_01.aws_internet_gateway.this[0]: Destroying... [id=igw-0973ea1f94fb1ab14]
+module.vpc_01.aws_subnet.public[0]: Destroying... [id=subnet-05190f61dab750923]
+module.vpc_01.aws_subnet.public[1]: Destroying... [id=subnet-04b2d54a3104eb29f]
+module.vpc_01.aws_eip.nat[2]: Destroying... [id=eipalloc-ed405ad2]
+module.vpc_01.aws_eip.nat[1]: Destroying... [id=eipalloc-97475da8]
+module.vpc_01.aws_eip.nat[0]: Destroying... [id=eipalloc-3a485205]
+module.vpc_01.aws_subnet.public[0]: Destruction complete after 0s
+module.vpc_01.aws_subnet.public[2]: Destruction complete after 0s
+module.vpc_01.aws_subnet.public[1]: Destruction complete after 0s
+module.vpc_01.aws_eip.nat[1]: Destruction complete after 0s
+module.vpc_01.aws_eip.nat[2]: Destruction complete after 0s
+module.vpc_01.aws_eip.nat[0]: Destruction complete after 0s
+module.vpc_01.aws_internet_gateway.this[0]: Still destroying... [id=igw-0973ea1f94fb1ab14, 10s elapsed]
+module.vpc_01.aws_internet_gateway.this[0]: Destruction complete after 10s
+module.vpc_01.aws_vpc.this[0]: Destroying... [id=vpc-0b74fbb24c65cc15e]
+module.vpc_01.aws_vpc.this[0]: Destruction complete after 1s
+
+Destroy complete! Resources: 34 destroyed.
 ```
 4. Remove the S3 bucket of Terraform remote state (created automatically from Terragrunt).
 5. Remove the DynamoDB Table for Terraform state locks (created automatically from Terragrunt). 
