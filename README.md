@@ -805,7 +805,7 @@ Note: You didn't use the -out option to save this plan, so Terraform can't
 guarantee to take exactly these actions if you run "terraform apply" now.
 ```
 5. Run the `terragrunt apply` command to create the resources and answer" yes "to confirm the operation.
-Take note of the output values ​​after the `terragrunt apply` phase, especially `alb_01_lb_dns_name`
+Take note of the output values ​​after the `terragrunt apply`.
 Perform the same procedure for all resource of the project
 Example of output:
 ```
@@ -944,8 +944,7 @@ vpc_01_public_subnets = [
 ---
 
 ## Access the Wordpress installation
-Let's try to invoke Wordpress by opening a browser and pointing the retrieved url through the output values *http://\<public_dns\>*
-(wordpres-install.png)
+Let's try to invoke Wordpress by opening a browser and pointing the retrieved url through the output values `alb_01_lb_dns_name` *http://\<public_dns\>*(wordpres-install.png)
 
 ---
 ## Delete Environment
