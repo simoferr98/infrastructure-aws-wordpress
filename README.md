@@ -47,7 +47,7 @@ They can be entered manually before Terraform / Terragrunt is started or they ca
 |passwordb|The password of admin user of Aurora database|string|
 
 ### Environment Variables
-Several variables are used to parameterize the architecture. The variables are defined in varriable/common.sh
+Several variables are used to parameterize the architecture. The variables are defined in variables/common.sh
 
 |Name|Description|Type|Default|
 |----|-----------|----|-----------------------|
