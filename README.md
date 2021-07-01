@@ -12,7 +12,7 @@ Creating an infrastructure to host Wordpress on AWS that must be scalable and hi
 - **Application Elastic Load Balancer**
   *Elastic Load Balancing (Amazon ALB) automatically distributes incoming application.*
 - **Elastic File System**
-  *Amazon Elastic File System (Amazon EFS) offre un file system semplice, serverless, impostabile in maniera permanente ed elastico che consente di condividere i dati dei file senza occuparsi del provisioning o della gestione dello storage.*
+  *Amazon Elastic File System (Amazon EFS) provides a simple, serverless, set-and-forget, elastic file system that lets you share file data without provisioning or managing storage.*
 - **Systems Manager Parameter Store**
   *Parameter Store, a capability of AWS Systems Manager, provides secure, hierarchical storage for configuration data management and secrets management.*
 - **RDS Amazon Aurora**
