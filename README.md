@@ -1,4 +1,4 @@
-# _infrastructure-aws-wordpres_
+# _Infrastructure-aws-WordPress_
 Creating an infrastructure to host Wordpress on AWS that must be scalable and highly reliable using the Infrastructure as Code (IaC) approach. All the components that compose it are managed by AWS, the effort to configure and manage the application is minimal.
 
 ## Infrastructure consists of the following components:
