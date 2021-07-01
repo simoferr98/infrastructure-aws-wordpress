@@ -944,7 +944,9 @@ vpc_01_public_subnets = [
 ---
 
 ## Access the Wordpress installation
-Let's try to invoke Wordpress by opening a browser and pointing the retrieved url through the output values `alb_01_lb_dns_name` *http://\<public_dns\>*(wordpres-install.png)
+Let's try to invoke Wordpress by opening a browser and pointing the retrieved url through the output values `alb_01_lb_dns_name` *http://\<public_dns\>*
+
+![wordpress-install](wordpress-install.png)
 
 ---
 ## Delete Environment
